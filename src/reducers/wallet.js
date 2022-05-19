@@ -2,15 +2,26 @@
 const INITIAL_STATE = {
   currencies: [],
   expenses: [],
+  isFetching: false,
 };
 
 const wallet = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-  case 'WALLET':
+  case 'GET_EXPENSE':
     return {
       ...state,
-      currencies: action.currencies,
-      expenses: action.expenses,
+      expenses: action.payload,
+    };
+  case 'REQUEST_CURRENCIES':
+    return {
+      ...state,
+      isFetching: true,
+    };
+  case 'GET_CURRENCIES':
+    return {
+      ...state,
+      currencies: action.payload,
+      isFetching: false,
     };
   default:
     return state;
