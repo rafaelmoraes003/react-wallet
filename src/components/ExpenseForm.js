@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import Input from './Input';
 import Select from './Select';
 import updateExpenses from '../actions/expensesAction';
+import updateForm from '../actions/editFormAction';
+import editExpense from '../actions/editExpense';
 
 class ExpenseForm extends React.Component {
   constructor() {
@@ -26,17 +28,35 @@ class ExpenseForm extends React.Component {
 
   sendLocalStateToRedux = async (e) => {
     e.preventDefault();
-    const { addLocalStateToRedux, expenses } = this.props;
-    const response = await fetch('https://economia.awesomeapi.com.br/json/all');
-    const data = await response.json();
-    delete data.USDT;
-    addLocalStateToRedux({ id: expenses.length, ...this.state, exchangeRates: data });
+    const { value, currency, method, tag, description } = this.state;
+    const { enableEditForm, expenses, expenseId, editExpenses, editForm } = this.props;
 
-    this.setState({ value: 0, description: '' });
+    if (value > 0 && !enableEditForm) { // FORMULÁRIO DE ADICIONAR DESPESA
+      const { addLocalStateToRedux } = this.props;
+      const response = await fetch('https://economia.awesomeapi.com.br/json/all');
+      const data = await response.json();
+      delete data.USDT;
+      const newId = expenses.length > 0 ? expenses[expenses.length - 1].id + 1 : 0;
+      addLocalStateToRedux({ id: newId, ...this.state, exchangeRates: data });
+      this.setState({ value: 0, description: '' });
+    } else if (value > 0 && enableEditForm) { // FORMULÁRIO DE EDITAR DESPESA
+      const editedExpense = expenses.map((item) => {
+        if (item.id === Number(expenseId)) {
+          item.value = value;
+          item.currency = currency;
+          item.method = method;
+          item.tag = tag;
+          item.description = description;
+        }
+        return item;
+      });
+      editExpenses(editedExpense);
+      editForm(expenseId);
+    }
   }
 
   render() {
-    const { coins } = this.props;
+    const { coins, buttonText } = this.props;
     const { value, description } = this.state;
     return (
       <form>
@@ -53,7 +73,7 @@ class ExpenseForm extends React.Component {
           label="Moeda"
           name="currency"
           list={ coins }
-          testId="coins-input"
+          testId="currency-input"
           onChange={ this.handleChange }
         />
 
@@ -86,7 +106,7 @@ class ExpenseForm extends React.Component {
           type="submit"
           onClick={ this.sendLocalStateToRedux }
         >
-          Adicionar despesa
+          { buttonText }
         </button>
 
       </form>
@@ -97,10 +117,14 @@ class ExpenseForm extends React.Component {
 const mapStateToProps = (state) => ({
   coins: state.wallet.currencies,
   expenses: state.wallet.expenses,
+  enableEditForm: state.editForm.enableToEditForm,
+  expenseId: state.editForm.id,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   addLocalStateToRedux: (value) => dispatch(updateExpenses(value)),
+  editExpenses: (value) => dispatch(editExpense(value)),
+  editForm: (value) => dispatch(updateForm(value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExpenseForm);
@@ -108,5 +132,15 @@ export default connect(mapStateToProps, mapDispatchToProps)(ExpenseForm);
 ExpenseForm.propTypes = {
   coins: PropTypes.arrayOf(PropTypes.string).isRequired,
   addLocalStateToRedux: PropTypes.func.isRequired,
-  expenses: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  expenses: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+  })).isRequired,
+  buttonText: PropTypes.string.isRequired,
+  enableEditForm: PropTypes.bool.isRequired,
+  editExpenses: PropTypes.func.isRequired,
+  editForm: PropTypes.func.isRequired,
+  expenseId: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
 };

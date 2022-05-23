@@ -1,5 +1,5 @@
 const deleteExpense = (value) => ({
-  type: 'DELETE_EXPENSE',
+  type: 'UPDATE_EXPENSE',
   payload: value,
 });
 

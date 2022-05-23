@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import deleteExpense from '../actions/deleteExpenseAction';
+import updateForm from '../actions/editFormAction';
 
 class TableExpenses extends React.Component {
   removeExpense = ({ target }) => {
@@ -11,11 +12,17 @@ class TableExpenses extends React.Component {
     removeExpense(removeItem);
   }
 
+  editExpense = ({ target }) => {
+    const { id } = target;
+    const { editForm } = this.props;
+    editForm(id);
+  }
+
   render() {
     const { expenses } = this.props;
     return (
       <table>
-        <tbody>
+        <thead>
           <tr>
             <th>Descrição</th>
             <th>Tag</th>
@@ -27,7 +34,7 @@ class TableExpenses extends React.Component {
             <th>Moeda de conversão</th>
             <th>Editar/Excluir</th>
           </tr>
-        </tbody>
+        </thead>
 
         <tbody>
           {expenses.length > 0 && (
@@ -51,6 +58,16 @@ class TableExpenses extends React.Component {
                 </td>
                 <td>Real</td>
                 <td>
+
+                  <button
+                    type="button"
+                    data-testid="edit-btn"
+                    id={ expense.id }
+                    onClick={ this.editExpense }
+                  >
+                    Editar
+                  </button>
+
                   <button
                     type="button"
                     data-testid="delete-btn"
@@ -59,6 +76,7 @@ class TableExpenses extends React.Component {
                   >
                     Excluir
                   </button>
+
                 </td>
               </tr>
             ))
@@ -75,6 +93,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   removeExpense: (value) => dispatch(deleteExpense(value)),
+  editForm: (value) => dispatch(updateForm(value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TableExpenses);
@@ -82,4 +101,5 @@ export default connect(mapStateToProps, mapDispatchToProps)(TableExpenses);
 TableExpenses.propTypes = {
   expenses: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   removeExpense: PropTypes.func.isRequired,
+  editForm: PropTypes.func.isRequired,
 };

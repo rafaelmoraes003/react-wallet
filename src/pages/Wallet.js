@@ -13,22 +13,29 @@ class Wallet extends React.Component {
   }
 
   render() {
+    const { editForm } = this.props;
     return (
       <div>
         <Header />
-        <ExpenseForm />
+        { !editForm && <ExpenseForm buttonText="Adicionar despesa" /> }
+        { editForm && <ExpenseForm buttonText="Editar despesa" /> }
         <TableExpenses />
       </div>
     );
   }
 }
 
+const mapStateToProps = (state) => ({
+  editForm: state.editForm.enableToEditForm,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   addCurrenciesToGlobalState: () => dispatch(fetchCoins()),
 });
 
-export default connect(null, mapDispatchToProps)(Wallet);
+export default connect(mapStateToProps, mapDispatchToProps)(Wallet);
 
 Wallet.propTypes = {
   addCurrenciesToGlobalState: PropTypes.func.isRequired,
+  editForm: PropTypes.bool.isRequired,
 };
