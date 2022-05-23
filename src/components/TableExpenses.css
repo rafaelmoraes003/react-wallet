@@ -1,0 +1,50 @@
+.table-container {
+  padding: 10px;
+}
+
+table {
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px;
+  border-collapse: collapse;
+}
+
+table th {
+  text-align: center;
+  padding: 5px;
+  width: calc(100% / 9);
+  background-color: rebeccapurple;
+}
+
+table td {
+  text-align: center;
+  height: 30px;
+  height: 50px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 500;
+  color: white;
+}
+
+
+table button {
+  margin: 0 3px;
+  height: 25px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 500;
+  background-color: rgb(31, 32, 31);
+  color: white;
+
+}
+
+table button:nth-child(1) {
+  border: 2px solid rgba(9, 182, 235, 0.92);
+}
+
+table button:nth-child(2) {
+  border: 2px solid red;
+}
+
+.wallet-container {
+  height: 100vh;
+  background-color: rgb(31, 32, 31);
+}

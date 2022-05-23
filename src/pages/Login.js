@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import userAction from '../actions/userAction';
+import image from '../images/logo.png';
+import './Login.css';
 
 class Login extends React.Component {
   constructor() {
@@ -34,36 +36,39 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="login-container">
-        <form>
-          <label htmlFor="email">
-            Email
-            <input
-              type="text"
-              data-testid="email-input"
-              id="email"
-              onChange={ this.hanldeChange }
-            />
-          </label>
-
-          <label htmlFor="password">
-            Senha
-            <input
-              type="password"
-              data-testid="password-input"
-              id="password"
-              onChange={ this.hanldeChange }
-            />
-          </label>
-
-          <button
-            type="button"
-            onClick={ this.sendInfo }
-            disabled={ !this.enableButton() }
-          >
-            Entrar
-          </button>
-        </form>
+      <div className="login-body">
+        <div className="login-container">
+          <form autoComplete="off">
+            <label htmlFor="email">
+              Email
+              <input
+                type="text"
+                data-testid="email-input"
+                id="email"
+                onChange={ this.hanldeChange }
+              />
+            </label>
+            <label htmlFor="password">
+              Senha
+              <input
+                type="password"
+                data-testid="password-input"
+                id="password"
+                onChange={ this.hanldeChange }
+              />
+            </label>
+            <button
+              type="button"
+              onClick={ this.sendInfo }
+              disabled={ !this.enableButton() }
+            >
+              Entrar
+            </button>
+          </form>
+          <div>
+            <img src={ image } alt="Imagem de carteira digital" />
+          </div>
+        </div>
       </div>
     );
   }

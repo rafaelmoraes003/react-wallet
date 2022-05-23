@@ -14,6 +14,7 @@ class Input extends React.Component {
           data-testid={ testId }
           value={ value }
           onChange={ onChange }
+          autoComplete="off"
         />
       </label>
     );

@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Swal from 'sweetalert2';
 import Input from './Input';
 import Select from './Select';
 import updateExpenses from '../actions/expensesAction';
 import updateForm from '../actions/editFormAction';
 import editExpense from '../actions/editExpense';
+import './ExpenseForm.css';
 
 class ExpenseForm extends React.Component {
   constructor() {
@@ -51,6 +53,7 @@ class ExpenseForm extends React.Component {
         return item;
       });
       editExpenses(editedExpense);
+      Swal.fire('Sua despesa foi alterada!', '', 'success');
       editForm(expenseId);
     }
   }
@@ -59,7 +62,7 @@ class ExpenseForm extends React.Component {
     const { coins, buttonText } = this.props;
     const { value, description } = this.state;
     return (
-      <form>
+      <form className="expenses-form">
         <Input
           type="number"
           label="Valor"

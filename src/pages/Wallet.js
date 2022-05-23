@@ -15,7 +15,7 @@ class Wallet extends React.Component {
   render() {
     const { editForm } = this.props;
     return (
-      <div>
+      <div className="wallet-container">
         <Header />
         { !editForm && <ExpenseForm buttonText="Adicionar despesa" /> }
         { editForm && <ExpenseForm buttonText="Editar despesa" /> }

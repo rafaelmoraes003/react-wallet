@@ -1,0 +1,28 @@
+.expenses-form {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  border-top: 6px solid rebeccapurple;
+  background-color: rgb(31, 32, 31);
+  color: white;
+}
+
+.expenses-form label {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  font-weight: 500;
+}
+
+.expenses-form input, .expenses-form select {
+  margin-left: 5px;
+}
+
+.expenses-form button {
+  background-color: rebeccapurple;
+  font-weight: 600;
+  font-size: 20px;
+  color: rgb(27, 17, 33);
+  border: none;
+  border-radius: 5px;
+}
