@@ -1,27 +1,27 @@
-<h1 align="left">Projeto React Wallet</h1>
+<h1 align="left">React Wallet</h1>
 
 ###
 
-<p align="left">O objetivo deste projeto era criar uma carteira digital que tem capacidade de se comunicar com as cotações das principais moedas internacionais para fazer o controle de gastos da pessoa usuária.<br><br>Para fazer isso, foi necessária a utilização da API de Cotação de Moedas da Awesome API, que entrega os dados atualizados dos valores que serão utilizados para fazer a conversão em BRL.<br><br>Por ser um projeto feito com Redux, o usuário tem o poder de conseguir alterar o estado global da aplicação ao EDITAR ou EXCLUIR uma despesa.</p>
+<p align="left">The objective of this project was to create a digital wallet capable of communicating with the quotations of the main international currencies in order to control the user's expenses.<br><br>To do this, it was necessary to use the Quotation API of Coins of the Awesome API, which delivers the updated data of the values that will be used to make the conversion into BRL.<br><br>As it is a project made with Redux, the user has the power to be able to change the global state of the application when EDIT or DELETE an expense.</p>
 
 ###
 
-<h2 align="left">Tecnologias utilizadas</h2>
+<h2 align="left">Technologies used</h2>
 
 ###
 
 <div align="left">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="70" width="52" alt="javascript logo"  />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="70" width="52" alt="react logo"  />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" height="70" width="52" alt="redux logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="50" width="62" alt="javascript logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="50" width="62" alt="react logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" height="50" width="62" alt="redux logo"  />
 </div>
 
 ###
 
-<h2 align="left">Como utilizar a aplicação</h2>
+<h2 align="left">How to use the application</h2>
 
 ###
 
-Faça o clone da aplicação usando o comando `git clone`. Após isso, entre na pasta do projeto utilizando o comando `cd react-wallet` e rode o comando `npm install`. Após a instalação, utilize o comando `npm start`.
+Clone the application using the `git clone` command. After that, enter the project folder using the `cd react-wallet` command and run the `npm install` command. After installation, use the `npm start` command.
 
 ###
