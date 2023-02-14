@@ -2,7 +2,7 @@
 
 ###
 
-<p align="left">The objective of this project was to create a digital wallet capable of communicating with the quotations of the main international currencies in order to control the user's expenses.<br><br>To do this, it was necessary to use the Quotation API of Coins of the Awesome API, which delivers the updated data of the values that will be used to make the conversion into BRL.<br><br>As it is a project made with Redux, the user has the power to be able to change the global state of the application when EDIT or DELETE an expense.</p>
+<p align="left">The objective of this project was to create a digital wallet capable of communicating with the quotations of the main international currencies in order to control the user's expenses.<br><br>To do this, it was necessary to use the Quotation API of Coins of the Awesome API, which delivers the updated data of the values that will be used to make the conversion into BRL.<br><br>As it is a project made with Redux, the user has the power to be able to change the global state of the application when EDIT or DELETE an expense.</p> 
 
 ###
 
